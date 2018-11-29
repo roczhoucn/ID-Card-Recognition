@@ -1,5 +1,0 @@
-spring:
-  datasource:
-    username: root
-    password: 1q2w3e
-    url: jdbc:mysql://10.16.8.99:3309/idcard?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true

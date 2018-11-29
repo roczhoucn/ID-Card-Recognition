@@ -1,6 +1,6 @@
-package service;
+package com.roczhou.service;
 
-import util.ConnectionFactory;
+import com.roczhou.util.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +17,7 @@ public class DbOperation {
         conn = ConnectionFactory.getConnection();
         conn.setAutoCommit(true);
 
-        String sql = "insert into cards (id_no,name,sex,nation,birth,address,image_status,risk_type,direction,log_id) values("+cardInfo.get("id_no")+','+cardInfo.get("name")+','+cardInfo.get("sex")+','+cardInfo.get("nation")+','+cardInfo.get("birth")+','+cardInfo.get("address")+','+cardInfo.get("image_status")+','+cardInfo.get("risk_type")+','+cardInfo.get("direction")+','+cardInfo.get("log_id")+")";
+        String sql = "insert into cards (id_no,name,sex,nation,birth,address,image_status,risk_type,direction,log_id) values('"+cardInfo.get("id_no")+"','"+cardInfo.get("name")+"','"+cardInfo.get("sex")+"','"+cardInfo.get("nation")+"','"+cardInfo.get("birth")+"','"+cardInfo.get("address")+"','"+cardInfo.get("image_status")+"','"+cardInfo.get("risk_type")+"','"+cardInfo.get("direction")+"','"+cardInfo.get("log_id")+"')";
         pstm = conn.prepareStatement(sql);
         pstm.execute();
         if (pstm != null) {

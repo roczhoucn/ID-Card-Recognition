@@ -1,4 +1,4 @@
-package util;
+package com.roczhou.util;
 
 /**
  * Created by ZhouPeng on 2018/11/29.
@@ -58,7 +58,6 @@ public class Img2Base64Util {
             //图像数据为空
             return false;
         }
-
 
         try
         {

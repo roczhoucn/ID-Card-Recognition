@@ -1,8 +1,8 @@
-package service;
+package com.roczhou.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import util.Img2Base64Util;
+import com.roczhou.util.Img2Base64Util;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -57,8 +57,7 @@ public class BaiduAIImpl {
         params.put("id_card_side",isFront?"front":"back");
         params.put("image",imgStr);
         params.put("detect_risk",true);
-//        String cardInfoStr = executePostByUsual(api_path,params,token);
-        String cardInfoStr = "{\"direction\":0,\"log_id\":4171799747212420381,\"image_status\":\"normal\",\"words_result\":{\"住址\":{\"location\":{\"width\":1175,\"top\":2032,\"left\":622,\"height\":254},\"words\":\"山东省青岛市市南区贵州路69号3\"},\"出生\":{\"location\":{\"width\":941,\"top\":1787,\"left\":645,\"height\":113},\"words\":\"19811101\"},\"姓名\":{\"location\":{\"width\":410,\"top\":1306,\"left\":649,\"height\":133},\"words\":\"迟旭光\"},\"公民身份号码\":{\"location\":{\"width\":1561,\"top\":2617,\"left\":1099,\"height\":129},\"words\":\"37021419811101451X\"},\"性别\":{\"location\":{\"width\":86,\"top\":1561,\"left\":641,\"height\":100},\"words\":\"男\"},\"民族\":{\"location\":{\"width\":78,\"top\":1578,\"left\":1239,\"height\":90},\"words\":\"汉\"}},\"words_result_num\":6,\"risk_type\":\"normal\"}";
+        String cardInfoStr = executePostByUsual(api_path,params,token);
         System.out.println(cardInfoStr);
         JSONObject cardInfoJson = JSON.parseObject(cardInfoStr);
         return cardInfoJson;
@@ -117,7 +116,7 @@ public class BaiduAIImpl {
         cardMapInfo.put("log_id",cardInfoJson.getString("log_id"));
         cardMapInfo.put("image_status",cardInfoJson.getString("image_status"));
         cardMapInfo.put("risk_type",cardInfoJson.getString("risk_type"));
-        cardMapInfo.put("address",cardInfoJson.getJSONObject("words_result").getJSONObject("地址").getString("words"));
+        cardMapInfo.put("address",cardInfoJson.getJSONObject("words_result").getJSONObject("住址").getString("words"));
         cardMapInfo.put("birth",cardInfoJson.getJSONObject("words_result").getJSONObject("出生").getString("words"));
         cardMapInfo.put("name",cardInfoJson.getJSONObject("words_result").getJSONObject("姓名").getString("words"));
         cardMapInfo.put("id_no",cardInfoJson.getJSONObject("words_result").getJSONObject("公民身份号码").getString("words"));

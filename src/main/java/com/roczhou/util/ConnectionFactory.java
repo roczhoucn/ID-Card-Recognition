@@ -1,6 +1,8 @@
-package util;
+package com.roczhou.util;
 
 import java.sql.Connection;
+import com.roczhou.Constants;
+
 import com.alibaba.druid.pool.DruidDataSource;
 /**
  * Created by ZhouPeng on 2018/2/24.
@@ -12,9 +14,9 @@ public class ConnectionFactory {
     static {
         try {
             String driver = "com.mysql.cj.jdbc.Driver";
-            String url = "jdbc:mysql:///idcard?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true";
-            String user = "root";
-            String password = "";
+            String url = "jdbc:mysql://"+Constants.DB_HOST+":"+Constants.DB_PORT+"/idcard?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true";
+            String user = Constants.DB_USERNAME;
+            String password = Constants.DB_PWD;
 
             dataSource = new DruidDataSource();
             dataSource.setDriverClassName(driver);
